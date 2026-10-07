@@ -135,6 +135,7 @@ canvas.innerHTML = sections.map((s, i) => `
   <button class="canvas-block ${s.id}" data-section="${i}" style="--accent:${s.color};--tint:${s.tint}" aria-haspopup="dialog" aria-label="Explorar ${s.title}" aria-describedby="summary-${s.id}">
     <span class="block-top">${icon(s.id)}<span class="block-number">${pad(i + 1)}</span></span>
     <h3>${s.title}</h3>
+    ${sectionScene(s.id)}
     ${s.pending ? '<span class="pending-label">Presupuesto por definir</span>' : ''}
     ${s.quote ? `<p class="value-quote">${s.quote}</p>` : ''}
     ${s.prices ? '<span class="price-row"><span class="price-item"><strong>$4.99 <span>USD</span></strong><small>Juego completo</small></span><span class="price-item"><strong>$7.99 <span>USD</span></strong><small>Supporter Pack</small></span></span>' : ''}
@@ -177,6 +178,7 @@ function showSection(index, trigger) {
   detailDialog.style.setProperty('--tint', s.tint);
   detailContent.innerHTML = `
     <div class="detail-heading">${icon(s.id)}<h2 id="detail-title" tabindex="-1">${s.title}</h2></div>
+    ${sectionScene(s.id, 'detail-scene')}
     <p class="detail-lead">${s.lead}</p>
     <ul class="detail-points">${s.points.map(([title, text]) => `<li><strong>${title}</strong>${text}</li>`).join('')}</ul>
     ${s.note ? `<p class="detail-note">${s.note}</p>` : ''}
@@ -247,7 +249,7 @@ document.querySelector('#source-notes').addEventListener('click', event => {
       <h3>Cómo se organizó la información</h3>
       <ul><li>Propuesta de valor, socios, canales e ingresos: principalmente página 27.</li><li>Audiencia: página 4. Equipo y recursos: páginas 1, 3 y 25.</li><li>Actividades y mecanismos de relación: plan de desarrollo y mantenimiento, páginas 25–27.</li><li>Costos: áreas derivadas del trabajo descrito; el PDF no incluye presupuesto ni importes.</li></ul>
       <h3>Imágenes originales, sin sustituciones</h3>
-      <p>El encabezado utiliza <strong>dimatrek_logo.png</strong>. El archivo <strong>Diagrama de Roles.png</strong> acompaña Recursos Clave y Actividades Clave. Los diseños del protagonista y PIP se extrajeron sin modificar de las páginas 10 y 18 del PDF y acompañan Propuesta de Valor. No hay imágenes locales pertinentes para todos los bloques.</p>
+      <p>El encabezado utiliza <strong>dimatrek_logo.png</strong>. El archivo <strong>Diagrama de Roles.png</strong> acompaña Recursos Clave y Actividades Clave. Los diseños del protagonista y PIP se extrajeron sin modificar de las páginas 10 y 18 del PDF y acompañan Propuesta de Valor. Cada bloque incluye además una ilustración vectorial animada de carácter decorativo, creada para este sitio; estas ilustraciones no son arte conceptual ni evidencia del GDD.</p>
       <p>Las referencias indican la posición real de cada página en el archivo (28 páginas), ya que la numeración impresa presenta duplicados. Los precios y plataformas representan el plan documentado, no una confirmación de lanzamiento. El documento alterna M-4 y M-5; se usa M-4, como en el resumen ejecutivo.</p>
     </div>`;
   document.querySelector('.detail-nav').hidden = true;
@@ -255,3 +257,14 @@ document.querySelector('#source-notes').addEventListener('click', event => {
   detailDialog.scrollTop = 0;
   document.querySelector('#detail-title').focus({ preventScroll: true });
 });
+
+const motionToggle = document.querySelector('#motion-toggle');
+const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+function setMotionPaused(paused) {
+  document.body.classList.toggle('motion-paused', paused);
+  motionToggle.setAttribute('aria-pressed', String(paused));
+  motionToggle.textContent = paused ? 'Activar animaciones' : 'Pausar animaciones';
+}
+setMotionPaused(motionPreference.matches);
+motionToggle.addEventListener('click', () => setMotionPaused(!document.body.classList.contains('motion-paused')));
+motionPreference.addEventListener('change', event => setMotionPaused(event.matches));
