@@ -43,7 +43,7 @@ Actualmente nos encontramos desarrollando nuestro proyecto insignia de aventura 
 | **Antagonista** | IA Central **CORE** & Protocolo **RESTORE** |
 | **Tech Stack** | Unity 3D (C#), FMOD Studio, Node.js API REST, PWA |
 
-👉 **[Consulta aquí el README Completo y Documentación de LUMEN](./LUMEN/README.md)** *(o enlace directo a tu repositorio de LUMEN)*
+👉 **[Consulta aquí el README Completo y Documentación de LUMEN](https://github.com/EMATIAS230045/Dimatrek-Services/tree/docs/ActualizarREADMEs/Lumen)** *(o enlace directo a tu repositorio de LUMEN)*
 
 ---
 
