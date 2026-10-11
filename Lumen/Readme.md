@@ -19,21 +19,27 @@
 
 ---
 
+
 ## 📖 Tabla de Contenidos
-- [Descripción General](#-descripción-general)
-- [Diseño del Juego (GDD Básico)](#-diseño-del-juego-gdd-básico)
-- [Gestión del Alcance](#-gestión-del-alcance)
-- [Stack Tecnológico y Pipeline](#-stack-tecnológico-y-pipeline)
-- [Arquitectura Técnica](#-arquitectura-técnica)
-- [Galería de Entidades y Activos Gráficos](#-galería-de-entidades-y-activos-gráficos)
-- [Estructura del Repositorio](#-estructura-del-repositorio)
-- [Gestión del Equipo y Metodología](#-gestión-del-equipo-y-metodología)
-- [Gestión de Riesgos](#-gestión-de-riesgos)
-- [Instalación y Despliegue](#-instalación-y-despliegue)
+
+- [Descripción General](#descripcion-general)
+- [Diseño del Juego (GDD Básico)](#diseno-del-juego)
+- [Gestión del Alcance](#gestion-del-alcance)
+- [Enlace del diagrama canvas](#diagrama-canvas)
+- [Stack Tecnológico y Pipeline](#stack-tecnologico)
+- [Arquitectura Técnica](#arquitectura-tecnica)
+- [Galería de Entidades y Activos Gráficos](#galeria-de-entidades)
+- [Estructura del Repositorio](#estructura-del-repositorio)
+- [Gestión del Equipo y Metodología](#gestion-del-equipo)
+- [Gestión de Riesgos](#gestion-de-riesgos)
+- [Instalación y Despliegue](#instalacion-y-despliegue)
+- [Estado del Proyecto](#estado-del-proyecto)
 
 ---
 
+<a id="descripcion-general"></a>
 ## 🎮 Descripción General
+
 
 **LUMEN: Crónicas de una Ciudad Olvidada** es una aventura de exploración isometrica en 3D ambientada en las ruinas de *Lumen*, una metrópoli automatizada donde la humanidad desapareció hace seis décadas. 
 
@@ -45,8 +51,9 @@ El jugador controla a **M-4**, una unidad de mantenimiento que despierta con una
 - **Geometría Low-Poly 3D:** Modelado estilizado optimizado para rendimiento y dirección de arte distintiva.
 
 ---
-
+<a id="diseno-del-juego"></a>
 ## 🕹️ Diseño del Juego (GDD Básico)
+- [⬆️ Regresar a la Tabla de Contenidos](#descripcion-general)
 
 ### Core Loop (Bucle Principal de Juego)
 
@@ -88,8 +95,9 @@ El jugador controla a **M-4**, una unidad de mantenimiento que despierta con una
 | **Inventario / Codex** | `TAB` / `I` | Abrir la interfaz de registros y el almacenamiento de ítems. |
 
 ---
-
+<a id="gestion-del-alcance"></a>
 ## 📋 Gestión del Alcance
+- [⬆️ Regresar a la Tabla de Contenidos](#descripcion-general)
 
 ### 🎯 Objetivo General
 
@@ -113,8 +121,27 @@ Las siguientes características quedan fuera del alcance de la versión actual:
 - Soporte nativo para consolas de sobremesa (PlayStation, Xbox y Nintendo Switch) en la fase actual.
 
 ---
+<a id="diagrama-canvas"></a>
+## 🤖 Diagrama Canvas del Proyecto
 
+- [⬆️ Regresar a la Tabla de Contenidos](#descripcion-general)
+
+El **Diagrama Canvas** (Lean Canvas) de *LUMEN: Crónicas de una Ciudad Olvidada* sintetiza el modelo estratégico, operativo y conceptual del desarrollo. En él se definen la propuesta de valor, los componentes clave y la planificación de entregables para la demo universitaria[cite: 1].
+
+### 📌 Pilares Principales del Canvas
+
+* **Propuesta de Valor:** Experiencia de exploración isométrica 3D con estética retro PSX, narrativa ambiental y resolución de acertijos con el kit de mantenimiento[cite: 1].
+* **Solución y Alcance:** Desarrollo de una demo jugable a 60 FPS en un periodo de 8 semanas, con audio adaptativo en FMOD y sincronización con la PWA *Terminal Codex*[cite: 1].
+* **Segmento de Usuarios:** Jugadores aficionados a las aventuras narrativas indie, ciencia ficción post-humana y la estética retro low-poly[cite: 1].
+* **Canales de Distribución:** Control de código y recursos en GitHub, ejecución nativa en PC Windows y aplicación web complementaria[cite: 1].
+
+> 🌐 **Enlace Directo al Diagrama Interactivo:**  
+> Puedes consultar el lienzo interactivo completo con todos los módulos y detalles en el siguiente enlace:  
+> 👉 **[Ver Diagrama Canvas Completo](https://ematias230045.github.io/Dimatrek-Services/)**
+---
+<a id="stack-tecnologico"></a>
 ## 🛠️ Stack Tecnológico y Pipeline
+- [⬆️ Regresar a la Tabla de Contenidos](#descripcion-general)
 
 | **Categoría** | **Tecnología / Herramienta** | **Descripción del Uso** |
 |---|---|---|
@@ -142,7 +169,10 @@ Las siguientes características quedan fuera del alcance de la versión actual:
 
 > **Nota:** Este documento describe los controles, el alcance funcional y las herramientas tecnológicas contempladas para la demo de LUMEN. Las casillas marcadas representan los entregables indicados como completados en el estado actual del proyecto.
 
+---
+<a id="arquitectura-tecnica"></a>
 ## 🏗️ Arquitectura Técnica
+- [⬆️ Regresar a la Tabla de Contenidos](#descripcion-general)
 
 La arquitectura de **LUMEN** se organiza en módulos que gestionan la entrada del jugador, el estado del juego, el audio y la persistencia de datos. El sistema de guardado y sincronización permite la comunicación con la aplicación web complementaria *Terminal Codex (PWA)* mediante una API REST sobre HTTPS.
 
@@ -184,8 +214,9 @@ La arquitectura de **LUMEN** se organiza en módulos que gestionan la entrada de
 | **Terminal Codex (PWA)** | Proporciona una interfaz web complementaria para consultar información sincronizada. |
 
 ---
-
+<a id="galeria-de-entidades"></a>
 ## 🎨 Galería de Entidades y Activos Gráficos
+- [⬆️ Regresar a la Tabla de Contenidos](#descripcion-general)
 
 El diseño visual de **LUMEN** cobra vida a través de personajes, autómatas y entidades clasificadas según su función narrativa y jugable.
 
@@ -262,8 +293,9 @@ Los personajes secundarios enriquecen la ambientación del mundo y ofrecen encue
 | ![Robot Esperador](assets/secundarios/Robot_Esperador.jpg) | ![Mesero de Agua](assets/secundarios/El_Mesero_de_Agua.png) |
 
 ---
-
+<a id="estructura-del-repositorio"></a>
 ## 📁 Estructura del Repositorio
+- [⬆️ Regresar a la Tabla de Contenidos](#descripcion-general)
 
 La siguiente estructura organiza los recursos gráficos, el proyecto de Unity y la documentación técnica de **LUMEN**.
 
@@ -307,8 +339,9 @@ LUMEN/
 ```
 
 ---
-
+<a id="gestion-del-equipo"></a>
 ## 👥 Gestión del Equipo y Metodología
+- [⬆️ Regresar a la Tabla de Contenidos](#descripcion-general)
 
 El desarrollo de **LUMEN** se organiza mediante la metodología ágil **Scrum**, con seguimiento del trabajo en Jira y sprints semanales durante un periodo estimado de ocho semanas, a partir del **28 de septiembre de 2026**.
 
@@ -328,8 +361,9 @@ El desarrollo de **LUMEN** se organiza mediante la metodología ágil **Scrum**,
 - **Inicio del proyecto:** 28 de septiembre de 2026.
 
 ---
-
+<a id="gestion-de-riesgos"></a>
 ## ⚠️ Gestión de Riesgos
+- [⬆️ Regresar a la Tabla de Contenidos](#descripcion-general)
 
 La gestión de riesgos permite identificar problemas técnicos que podrían afectar el rendimiento, la integración y el cumplimiento de los objetivos de la demo.
 
@@ -341,8 +375,9 @@ La gestión de riesgos permite identificar problemas técnicos que podrían afec
 | **Fallos de conexión con la PWA Terminal Codex** | Bajo | Mantener los datos pendientes localmente y sincronizarlos cuando se restablezca la conexión, si la arquitectura implementa esta capacidad. |
 
 ---
-
+<a id="instalacion-y-despliegue"></a>
 ## 🚀 Instalación y Despliegue
+- [⬆️ Regresar a la Tabla de Contenidos](#descripcion-general)
 
 ### 💻 Requisitos mínimos para PC
 
@@ -381,7 +416,7 @@ La gestión de riesgos permite identificar problemas técnicos que podrían afec
    Si ya existe una versión compilada, ejecuta `LUMEN.exe` desde la carpeta de distribución correspondiente.
 
 ---
-
+<a id="estado-del-proyecto"></a>
 ## 📌 Estado del Proyecto
 
 **LUMEN** es un proyecto de videojuego con perspectiva isométrica 3D que combina exploración, reparación de mecanismos, combate, narrativa ambiental y una estética retrofuturista.

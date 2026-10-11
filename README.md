@@ -3,9 +3,6 @@
   <img src="assets/dimatrek_logo.png" alt="LUMEN Logo / M-4" width="380" />
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/DIMATREK-SERVICES-0052CC?style=for-the-badge&logo=rocket&logoColor=white" alt="Dimatrek Services" />
-</p>
 
 <p align="center">
   <b>Estudio de Desarrollo de Videojuegos, Arquitectura de Software y Ecosistemas Digitales Multiplataforma.</b>
@@ -14,7 +11,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Unity-2022.3%20LTS-black?style=for-the-badge&logo=unity&logoColor=white" alt="Unity">
   <img src="https://img.shields.io/badge/Node.js-REST%20API-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js">
-  <img src="https://img.shields.io/badge/PWA-Terminal%20Codex-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA">
   <img src="https://img.shields.io/badge/Methodology-Agile%20%2F%20Scrum-0052CC?style=for-the-badge&logo=jira&logoColor=white" alt="Jira">
 </p>
 
