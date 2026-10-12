@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Proyecto Lumen — Business Model Canvas",
+    "subtitle": "Topología de valor, desarrollo y comercialización",
+    "output": ".archify/architecture-lumen-bmc-20261011-210000/lumen-bmc-architecture.html",
+    "quality_profile": "showcase",
+    "animation": "trace"
+  },
+  "components": [
+    {"id":"partners","type":"external","label":"Socios clave","sublabel":"Steam · Itch.io · festivales","pos":[40,80],"size":[180,76]},
+    {"id":"activities","type":"backend","label":"Actividades clave","sublabel":"Unity · puzzles · API · QA","pos":[390,80],"size":[180,76]},
+    {"id":"value","type":"frontend","label":"Propuesta de valor","sublabel":"RPG de reparación e identidad","pos":[530,245],"size":[220,88],"tag":"Núcleo Lumen"},
+    {"id":"relationships","type":"security","label":"Relación con jugadores","sublabel":"Devlogs · feedback · soporte","pos":[815,80],"size":[180,76]},
+    {"id":"segments","type":"external","label":"Segmentos de clientes","sublabel":"Indie · narrativa · academia","pos":[1185,80],"size":[180,76]},
+    {"id":"resources","type":"database","label":"Recursos clave","sublabel":"Equipo · assets · GDD · API","pos":[285,430],"size":[180,76]},
+    {"id":"channels","type":"cloud","label":"Canales","sublabel":"Itch.io · Steam · PWA","pos":[815,430],"size":[180,76]},
+    {"id":"costs","type":"messagebus","label":"Estructura de costos","sublabel":"Producción · hosting · Steam","pos":[40,600],"size":[300,76]},
+    {"id":"revenue","type":"cloud","label":"Fuentes de ingresos","sublabel":"Juego $4.99 · Pack $7.99","pos":[940,600],"size":[300,76]}
+  ],
+  "connections": [
+    {"from":"partners","to":"activities","label":"distribución y difusión"},
+    {"from":"activities","to":"value","label":"construye experiencia","variant":"emphasis"},
+    {"from":"resources","to":"value","label":"habilita producción","variant":"emphasis"},
+    {"from":"value","to":"relationships","label":"genera comunidad"},
+    {"from":"relationships","to":"segments","label":"aprendizaje validado"},
+    {"from":"segments","to":"channels","label":"alcanza audiencia"},
+    {"from":"channels","to":"revenue","label":"conversión premium","variant":"emphasis"},
+    {"from":"costs","to":"activities","label":"financia producción"},
+    {"from":"revenue","to":"resources","label":"sostiene evolución","variant":"dashed"}
+  ]
+}
