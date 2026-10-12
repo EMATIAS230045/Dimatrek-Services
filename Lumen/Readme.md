@@ -137,7 +137,7 @@ El **Diagrama Canvas** (Lean Canvas) de *LUMEN: Crónicas de una Ciudad Olvidada
 
 > 🌐 **Enlace Directo al Diagrama Interactivo:**  
 > Puedes consultar el lienzo interactivo completo con todos los módulos y detalles en el siguiente enlace:  
-> 👉 **[Ver Diagrama Canvas Completo](https://ematias230045.github.io/Dimatrek-Services/Lumen/Pages/Canvas)**
+> 👉 **[Ver Diagrama Canvas Completo](https://ematias230045.github.io/Dimatrek-Services/Lumen/Pages/CanvasLumen-V2/)**
 ---
 <a id="stack-tecnologico"></a>
 ## 🛠️ Stack Tecnológico y Pipeline

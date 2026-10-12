@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "ae5a6125-70ae-48db-9265-d4b958fc707f",
+  "status": "failed",
+  "command": "deliver",
+  "stage": "render",
+  "input": "C:\\Users\\matias\\Desktop\\Introgradora\\Dimatrek-Services\\Lumen\\.archify\\architecture-lumen-user-roles-20261011-230000\\candidate.json",
+  "output": "C:\\Users\\matias\\Desktop\\Introgradora\\Dimatrek-Services\\Lumen\\.archify\\architecture-lumen-user-roles-20261011-230000\\lumen-user-roles-architecture.html",
+  "artifact": {
+    "sha256": "cf8c1c793cbd55a024faca886a7bda29c544e074794c066a11e686c6a0fa8848",
+    "bytes": 758620
+  },
+  "error": "Architecture layout validation failed:\n- [composition/proper-crossing] showcase architecture connections[5] \"lumen\" -> \"codex\" crosses connections[6] \"community\" -> \"qa\" at [869, 537] (segments 1 and 3) — if the authored via/fromSide/toSide are not required by the user, remove them so the renderer can re-plan; otherwise preserve that intent and adjust route/via or fromSide/toSide so the connections use separate corridors."
+}

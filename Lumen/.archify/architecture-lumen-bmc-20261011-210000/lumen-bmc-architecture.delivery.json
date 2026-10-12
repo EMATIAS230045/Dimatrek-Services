@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "f4728471-348c-4927-9519-49bdc6c37f0f",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\Users\\matias\\Desktop\\Introgradora\\Dimatrek-Services\\Lumen\\.archify\\architecture-lumen-bmc-20261011-210000\\candidate.json",
+  "output": "C:\\Users\\matias\\Desktop\\Introgradora\\Dimatrek-Services\\Lumen\\.archify\\architecture-lumen-bmc-20261011-210000\\lumen-bmc-architecture.html",
+  "specification": {
+    "sha256": "09d3126ba5548cd8ca15bc36b9746e65d634887ebf04ea09898257838f9f3ec5",
+    "bytes": 2438
+  },
+  "artifact": {
+    "sha256": "8e6830f154bafa000058e5664b3ff39bac213d25944e30b2a2a327893fe2167c",
+    "bytes": 763603
+  }
+}
