@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Business Model Canvas interactivo e hiper-visual para Proyecto Lumen (RPG de reparación y puzles) con métricas de playtesters, imágenes de gamers y diagnóstico estratégico.">
+  <title>Proyecto Lumen · Business Model Canvas Interactivo & Playtest Hub</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            bgDark: '#050914',
+            panel: '#0d1527',
+            panelHover: '#132038',
+            cyanNeon: '#3fe4ff',
+            violetNeon: '#a87aff',
+            limeNeon: '#b9f558',
+            amberNeon: '#ffc65a',
+            roseNeon: '#ff6c98',
+            lineBlue: '#223d61'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050914;
+      --cyan: #3fe4ff;
+      --violet: #a87aff;
+      --lime: #b9f558;
+      --amber: #ffc65a;
+      --rose: #ff6c98;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 10% 0%, #0d2847 0%, transparent 40%),
+        radial-gradient(circle at 90% 60%, #281442 0%, transparent 45%),
+        radial-gradient(circle at 50% 100%, #071329 0%, transparent 50%);
+      background-attachment: fixed;
+      color: #e2f1ff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Grid lines aesthetic overlay */
+    .grid-overlay {
+      background-image: linear-gradient(to right, rgba(35, 60, 95, 0.15) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(35, 60, 95, 0.15) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* Sci-fi glowing effects */
+    .glow-cyan { box-shadow: 0 0 20px rgba(63, 228, 255, 0.25); }
+    .glow-violet { box-shadow: 0 0 20px rgba(168, 122, 255, 0.3); }
+    .glow-lime { box-shadow: 0 0 20px rgba(185, 245, 88, 0.25); }
+    .glow-amber { box-shadow: 0 0 20px rgba(255, 198, 90, 0.25); }
+
+    /* SVG link animations */
+    .link-path {
+      stroke: #335985;
+      stroke-width: 2;
+      fill: none;
+      opacity: 0.45;
+      transition: all 0.3s ease;
+    }
+    .link-path.active {
+      stroke: var(--cyan);
+      stroke-width: 3.2;
+      opacity: 1;
+      filter: drop-shadow(0 0 8px var(--cyan));
+      stroke-dasharray: 8 4;
+      animation: dash 1.5s linear infinite;
+    }
+    .link-path.commercial.active { stroke: var(--amber); filter: drop-shadow(0 0 8px var(--amber)); }
+    .link-path.community.active { stroke: var(--lime); filter: drop-shadow(0 0 8px var(--lime)); }
+
+    @keyframes dash {
+      to { stroke-dashoffset: -36; }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #070d1a; }
+    ::-webkit-scrollbar-thumb { background: #1e3654; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3fe4ff; }
+
+    /* Scene SVG keyframes */
+    @keyframes pulseGlow { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
+    @keyframes floatAnim { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+    .animate-float { animation: floatAnim 3s ease-in-out infinite; }
+    .animate-pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+
+    dialog::backdrop {
+      background: rgba(3, 7, 18, 0.85);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-cyanNeon selection:text-black">
+
+  <header class="sticky top-0 z-40 bg-bgDark/90 backdrop-blur-md border-b border-lineBlue/60 px-4 lg:px-8 py-3 transition-all">
+    <div class="max-w-[1780px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      
+      <!-- Brand & Status -->
+      <div class="flex items-center gap-3">
+        <div class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyanNeon opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-cyanNeon"></span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-mono tracking-widest text-cyanNeon font-bold uppercase">DIMATREK STUDIO · GDD CANVAS v2.4</span>
+            <span class="bg-cyanNeon/10 border border-cyanNeon/30 text-cyanNeon text-[9px] px-1.5 py-0.5 rounded font-mono">LIVE HUBS</span>
+          </div>
+          <h1 class="text-xl lg:text-2xl font-black tracking-tight text-white flex items-center gap-2">
+            PROYECTO <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyanNeon via-violetNeon to-limeNeon">LUMEN</span>
+            <span class="text-xs font-normal text-gray-400 hidden sm:inline-block">| Canvas Interactivo de Negocio & Playtesting</span>
+          </h1>
+        </div>
+      </div>
+
+      <!-- Live metrics ticker -->
+      <div class="hidden xl:flex items-center gap-6 bg-panel/80 px-4 py-1.5 rounded-lg border border-lineBlue/50 text-xs font-mono">
+        <div><span class="text-gray-400">WISHLISTS:</span> <strong class="text-cyanNeon">14,280</strong></div>
+        <div class="w-px h-3 bg-lineBlue"></div>
+        <div><span class="text-gray-400">DEMO DOWNLOADS:</span> <strong class="text-amberNeon">45,910</strong></div>
+        <div class="w-px h-3 bg-lineBlue"></div>
+        <div><span class="text-gray-400">PLAYTEST SCORE:</span> <strong class="text-limeNeon">96.4% POSITIVO</strong></div>
+      </div>
+
+      <!-- Controls & Audio toggle -->
+      <div class="flex items-center gap-2 self-end md:self-auto flex-wrap">
+        <button id="audio-toggle" class="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-lineBlue bg-panel hover:bg-panelHover text-xs font-semibold text-gray-300 hover:text-cyanNeon transition-all" title="Activar/Desactivar efectos de sonido SFX">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+          <span id="audio-status">SFX: OFF</span>
+        </button>
+        
+        <div class="h-4 w-px bg-lineBlue mx-1 hidden sm:block"></div>
+
+        <!-- Filters Lentes -->
+        <div class="flex items-center gap-1 bg-panel p-1 rounded-lg border border-lineBlue/60">
+          <button class="filter-btn active text-xs font-semibold px-2.5 py-1 rounded-md text-gray-300 hover:text-white transition-all" data-filter="all">⚡ Todos</button>
+          <button class="filter-btn text-xs font-semibold px-2.5 py-1 rounded-md text-gray-300 hover:text-cyanNeon transition-all" data-filter="development">⌘ Desarrollo</button>
+          <button class="filter-btn text-xs font-semibold px-2.5 py-1 rounded-md text-gray-300 hover:text-amberNeon transition-all" data-filter="commercial">◈ Comercial</button>
+          <button class="filter-btn text-xs font-semibold px-2.5 py-1 rounded-md text-gray-300 hover:text-limeNeon transition-all" data-filter="community">◌ Comunidad</button>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="max-w-[1780px] mx-auto px-4 lg:px-8 py-6 flex-grow w-full space-y-10">
+    
+    <!-- CANVAS INTRO & SUMMARY BANNER -->
+    <section class="bg-gradient-to-r from-panel via-panel/80 to-panel/40 border border-lineBlue/80 rounded-xl p-5 shadow-2xl relative overflow-hidden grid-overlay">
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-cyanNeon/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+        <div class="space-y-2 max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-cyanNeon/10 border border-cyanNeon/30 text-cyanNeon text-xs font-mono">
+            <span>MODELO DE NEGOCIO GAMING & COMUNIDAD</span>
+          </div>
+          <h2 class="text-2xl lg:text-3xl font-extrabold text-white">Mapa Estratégico 360° con Métricas de Gamers & Playtesters</h2>
+          <p class="text-sm text-gray-300 leading-relaxed">
+            Explora las dependencias entre desarrollo, canales comerciales y comunidad de jugadores de <strong class="text-cyanNeon">Proyecto Lumen</strong>. Selecciona cualquier nodo para analizar diagnósticos, costos, conexión con el GDD e interacción de los usuarios en tiempo real.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-4 bg-bgDark/60 backdrop-blur-sm p-4 rounded-lg border border-lineBlue/60 text-xs font-mono">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-cyanNeon inline-block"></span> <span>Desarrollo técnico / Unity</span></div>
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-amberNeon inline-block"></span> <span>Monetización & Steam</span></div>
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-limeNeon inline-block"></span> <span>Comunidad & Playtests</span></div>
+          </div>
+          <div class="w-px h-12 bg-lineBlue"></div>
+          <div class="text-center space-y-1">
+            <span class="text-gray-400 block">PLANTILLA BMC</span>
+            <span class="text-cyanNeon font-bold text-sm">9 NODOS CONECTADOS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CANVAS GRID WITH SVG CONNECTIONS -->
+    <section class="relative bg-panel/40 rounded-2xl border border-lineBlue/80 p-4 lg:p-6 shadow-2xl min-h-[760px] grid-overlay overflow-x-auto">
+      
+      <!-- SVG overlay for dynamic links -->
+      <svg id="svg-links" class="absolute inset-0 w-full h-full pointer-events-none z-10" aria-hidden="true">
+        <defs>
+          <marker id="arrow-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#3fe4ff"/>
+          </marker>
+          <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#ffc65a"/>
+          </marker>
+          <marker id="arrow-lime" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#b9f558"/>
+          </marker>
+        </defs>
+      </svg>
+
+      <!-- 9 NODES CANVAS GRID LAYOUT -->
+      <div id="canvas-grid" class="relative z-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 min-w-[1000px] lg:min-w-0">
+
+        <!-- 01 / RED (Socios Clave) -->
+        <div class="node-card group relative bg-panel/90 border border-lineBlue hover:border-cyanNeon rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer shadow-lg flex flex-col justify-between" data-node="partners" data-type="community">
+          <div>
+            <div class="relative h-28 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Socios+Clave'" alt="Gamer con control de consola y pantalla neón" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <span class="absolute top-2 left-2 bg-bgDark/80 border border-limeNeon/40 text-limeNeon font-mono text-[10px] font-bold px-2 py-0.5 rounded">01 / RED</span>
+              <span class="absolute top-2 right-2 bg-limeNeon/20 text-limeNeon p-1 rounded-full"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+            </div>
+            <div class="p-3.5 space-y-1">
+              <h3 class="font-bold text-white group-hover:text-cyanNeon text-sm flex items-center justify-between">Socios Clave <svg class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-cyanNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></h3>
+              <p class="text-xs text-gray-400 line-clamp-2">Steam, Itch.io, creadores de contenido gaming, festivales indie y proveedores.</p>
+            </div>
+          </div>
+          <div class="p-3.5 pt-0 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-lineBlue/40 mt-2">
+            <span>PLATAFORMAS</span>
+            <span class="text-limeNeon group-hover:underline">Ver Diagnóstico ↗</span>
+          </div>
+        </div>
+
+        <!-- 02 / PRODUCCIÓN (Actividades Clave) -->
+        <div class="node-card group relative bg-panel/90 border border-lineBlue hover:border-cyanNeon rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer shadow-lg flex flex-col justify-between" data-node="activities" data-type="development">
+          <div>
+            <div class="relative h-28 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Desarrollo+Unity'" alt="Programador trabajando en código de videojuego sci-fi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <span class="absolute top-2 left-2 bg-bgDark/80 border border-cyanNeon/40 text-cyanNeon font-mono text-[10px] font-bold px-2 py-0.5 rounded">02 / PRODUCCIÓN</span>
+              <span class="absolute top-2 right-2 bg-cyanNeon/20 text-cyanNeon p-1 rounded-full"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></span>
+            </div>
+            <div class="p-3.5 space-y-1">
+              <h3 class="font-bold text-white group-hover:text-cyanNeon text-sm flex items-center justify-between">Actividades Clave <svg class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-cyanNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></h3>
+              <p class="text-xs text-gray-400 line-clamp-2">Unity C#, diseño de puzles lógicos, QA con playtesters y sincronización API.</p>
+            </div>
+          </div>
+          <div class="p-3.5 pt-0 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-lineBlue/40 mt-2">
+            <span>MOTOR & QA</span>
+            <span class="text-cyanNeon group-hover:underline">Ver Diagnóstico ↗</span>
+          </div>
+        </div>
+
+        <!-- NÚCLEO / LUMEN (Propuesta de Valor - CENTRAL) -->
+        <div class="node-card group relative bg-gradient-to-b from-panel via-panel to-violet-950/40 border-2 border-violetNeon hover:border-cyanNeon rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer shadow-2xl glow-violet flex flex-col justify-between lg:row-span-2" data-node="value" data-type="development">
+          <div>
+            <div class="relative h-44 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Gameplay+Lumen'" alt="Gamer jugando en PC con luces neón y periféricos RGB" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/30 to-transparent"></div>
+              <span class="absolute top-2 left-2 bg-violetNeon text-black font-mono text-[10px] font-black px-2 py-0.5 rounded shadow">NÚCLEO ESTRATÉGICO</span>
+              <span class="absolute top-2 right-2 bg-violetNeon/30 text-violetNeon p-1.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h3 class="font-extrabold text-white group-hover:text-cyanNeon text-base flex items-center justify-between">Propuesta de Valor <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-cyanNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></h3>
+              <p class="text-xs text-gray-300 leading-relaxed">
+                RPG isométrico de exploración y puzles de reparación. Vivirás la travesía de <strong class="text-cyanNeon">M-4</strong> y <strong class="text-amberNeon">PIP</strong> en una metrópolis robótica abandonada mientras enfrentan la orden de formateo de CORE.
+              </p>
+              <div class="p-2.5 rounded-lg bg-bgDark/80 border border-violetNeon/30 text-[11px] text-gray-300 space-y-1">
+                <div class="flex justify-between font-mono"><span class="text-violetNeon">MECÁNICA NÚCLEO:</span> <span>Reparar = Lore</span></div>
+                <div class="flex justify-between font-mono"><span class="text-violetNeon">DURACIÓN DEMO:</span> <span>45-60 min</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 pt-0 flex items-center justify-between text-xs font-mono border-t border-lineBlue/60 mt-2">
+            <span class="text-violetNeon font-bold">GAMEPLAY RPG</span>
+            <span class="text-cyanNeon group-hover:underline">Explorar Núcleo ↗</span>
+          </div>
+        </div>
+
+        <!-- 03 / VÍNCULO (Relación con Jugadores) -->
+        <div class="node-card group relative bg-panel/90 border border-lineBlue hover:border-cyanNeon rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer shadow-lg flex flex-col justify-between" data-node="relationships" data-type="community">
+          <div>
+            <div class="relative h-28 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Comunidad+Gamer'" alt="Jugadora gamer en directo con audífonos gaming" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <span class="absolute top-2 left-2 bg-bgDark/80 border border-limeNeon/40 text-limeNeon font-mono text-[10px] font-bold px-2 py-0.5 rounded">03 / VÍNCULO</span>
+              <span class="absolute top-2 right-2 bg-limeNeon/20 text-limeNeon p-1 rounded-full"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg></span>
+            </div>
+            <div class="p-3.5 space-y-1">
+              <h3 class="font-bold text-white group-hover:text-cyanNeon text-sm flex items-center justify-between">Relación Jugadores <svg class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-cyanNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></h3>
+              <p class="text-xs text-gray-400 line-clamp-2">Devlogs semanales, Discord de playtesting, encuestas in-game y parches rápidos.</p>
+            </div>
+          </div>
+          <div class="p-3.5 pt-0 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-lineBlue/40 mt-2">
+            <span>FEEDBACK DIRECTO</span>
+            <span class="text-limeNeon group-hover:underline">Ver Diagnóstico ↗</span>
+          </div>
+        </div>
+
+        <!-- 04 / AUDIENCIA (Segmentos de Clientes) -->
+        <div class="node-card group relative bg-panel/90 border border-lineBlue hover:border-cyanNeon rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer shadow-lg flex flex-col justify-between" data-node="segments" data-type="community">
+          <div>
+            <div class="relative h-28 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Gamers+Playtesting'" alt="Grupo de gamers probando videojuego en una sala de pruebas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <span class="absolute top-2 left-2 bg-bgDark/80 border border-limeNeon/40 text-limeNeon font-mono text-[10px] font-bold px-2 py-0.5 rounded">04 / AUDIENCIA</span>
+              <span class="absolute top-2 right-2 bg-limeNeon/20 text-limeNeon p-1 rounded-full"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></span>
+            </div>
+            <div class="p-3.5 space-y-1">
+              <h3 class="font-bold text-white group-hover:text-cyanNeon text-sm flex items-center justify-between">Segmentos Clientes <svg class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-cyanNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></h3>
+              <p class="text-xs text-gray-400 line-clamp-2">Fans de RPGs narrativos e indies, jugadores de puzles y comunidad técnica.</p>
+            </div>
+          </div>
+          <div class="p-3.5 pt-0 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-lineBlue/40 mt-2">
+            <span>PERFIL GAMER</span>
+            <span class="text-limeNeon group-hover:underline">Ver Diagnóstico ↗</span>
+          </div>
+        </div>
+
+        <!-- 05 / BASE (Recursos Clave) -->
+        <div class="node-card group relative bg-panel/90 border border-lineBlue hover:border-cyanNeon rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer shadow-lg flex flex-col justify-between" data-node="resources" data-type="development">
+          <div>
+            <div class="relative h-28 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Assets+LowPoly'" alt="Pantalla de código y motores de juegos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <span class="absolute top-2 left-2 bg-bgDark/80 border border-cyanNeon/40 text-cyanNeon font-mono text-[10px] font-bold px-2 py-0.5 rounded">05 / BASE</span>
+              <span class="absolute top-2 right-2 bg-cyanNeon/20 text-cyanNeon p-1 rounded-full"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg></span>
+            </div>
+            <div class="p-3.5 space-y-1">
+              <h3 class="font-bold text-white group-hover:text-cyanNeon text-sm flex items-center justify-between">Recursos Clave <svg class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-cyanNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></h3>
+              <p class="text-xs text-gray-400 line-clamp-2">Equipo dev, GDD técnico, assets low-poly, audio FMOD y servidor Node/API.</p>
+            </div>
+          </div>
+          <div class="p-3.5 pt-0 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-lineBlue/40 mt-2">
+            <span>INFRAESTRUCTURA</span>
+            <span class="text-cyanNeon group-hover:underline">Ver Diagnóstico ↗</span>
+          </div>
+        </div>
+
+        <!-- 06 / ACCESO (Canales) -->
+        <div class="node-card group relative bg-panel/90 border border-lineBlue hover:border-cyanNeon rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer shadow-lg flex flex-col justify-between" data-node="channels" data-type="commercial">
+          <div>
+            <div class="relative h-28 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Canales+Steam+PWA'" alt="Gamer jugando en consola portátil / smartphone" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <span class="absolute top-2 left-2 bg-bgDark/80 border border-amberNeon/40 text-amberNeon font-mono text-[10px] font-bold px-2 py-0.5 rounded">06 / ACCESO</span>
+              <span class="absolute top-2 right-2 bg-amberNeon/20 text-amberNeon p-1 rounded-full"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></span>
+            </div>
+            <div class="p-3.5 space-y-1">
+              <h3 class="font-bold text-white group-hover:text-cyanNeon text-sm flex items-center justify-between">Canales de Acceso <svg class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-cyanNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></h3>
+              <p class="text-xs text-gray-400 line-clamp-2">Steam Store, Itch.io Demo, PWA Terminal de Lumen y companion app móvil.</p>
+            </div>
+          </div>
+          <div class="p-3.5 pt-0 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-lineBlue/40 mt-2">
+            <span>DISTRIBUCIÓN</span>
+            <span class="text-amberNeon group-hover:underline">Ver Diagnóstico ↗</span>
+          </div>
+        </div>
+
+        <!-- 07 / CONSUMO (Estructura de Costos) -->
+        <div class="node-card group relative bg-panel/90 border border-lineBlue hover:border-cyanNeon rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer shadow-lg flex flex-col justify-between lg:col-span-2" data-node="costs" data-type="development">
+          <div>
+            <div class="relative h-28 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Costos+Servidores'" alt="Iluminación cyber neón en estudio de desarrollo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <span class="absolute top-2 left-2 bg-bgDark/80 border border-cyanNeon/40 text-cyanNeon font-mono text-[10px] font-bold px-2 py-0.5 rounded">07 / CONSUMO</span>
+              <span class="absolute top-2 right-2 bg-cyanNeon/20 text-cyanNeon p-1 rounded-full"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></span>
+            </div>
+            <div class="p-3.5 space-y-1">
+              <h3 class="font-bold text-white group-hover:text-cyanNeon text-sm flex items-center justify-between">Estructura de Costos <svg class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-cyanNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></h3>
+              <p class="text-xs text-gray-400 line-clamp-2">Infraestructura API ($10-$50/mes), Steam Direct Fee ($100), producción de assets, herramientas y QA.</p>
+            </div>
+          </div>
+          <div class="p-3.5 pt-0 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-lineBlue/40 mt-2">
+            <span>PRESUPUESTO ACORTADO</span>
+            <span class="text-cyanNeon group-hover:underline">Ver Diagnóstico ↗</span>
+          </div>
+        </div>
+
+        <!-- 08 / SOSTENIBILIDAD (Fuentes de Ingresos) -->
+        <div class="node-card group relative bg-panel/90 border border-lineBlue hover:border-cyanNeon rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer shadow-lg flex flex-col justify-between lg:col-span-2" data-node="revenue" data-type="commercial">
+          <div>
+            <div class="relative h-28 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&w=800&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Fuentes+de+Ingreso'" alt="Gamer jugando en headset VR y periféricos sci-fi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent"></div>
+              <span class="absolute top-2 left-2 bg-bgDark/80 border border-amberNeon/40 text-amberNeon font-mono text-[10px] font-bold px-2 py-0.5 rounded">08 / SOSTENIBILIDAD</span>
+              <span class="absolute top-2 right-2 bg-amberNeon/20 text-amberNeon p-1 rounded-full"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></span>
+            </div>
+            <div class="p-3.5 space-y-1">
+              <h3 class="font-bold text-white group-hover:text-cyanNeon text-sm flex items-center justify-between">Fuentes de Ingresos <svg class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-cyanNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></h3>
+              <p class="text-xs text-gray-400 line-clamp-2">Venta premium en Steam ($4.99 USD), Demo gratuita ($0 USD) y Supporter Pack ($7.99 USD) con BSO y arte.</p>
+            </div>
+          </div>
+          <div class="p-3.5 pt-0 flex items-center justify-between text-[11px] font-mono text-gray-400 border-t border-lineBlue/40 mt-2">
+            <span>MODELO PREMIUM + DEMO</span>
+            <span class="text-amberNeon group-hover:underline">Ver Diagnóstico ↗</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-lineBlue/60 pb-4">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-mono text-cyanNeon mb-1">
+            <span class="w-2 h-2 rounded-full bg-cyanNeon animate-pulse"></span>
+            <span>PLAYTESTERS & PLATAFORMAS EN TIEMPO REAL</span>
+          </div>
+          <h2 class="text-xl lg:text-2xl font-bold text-white">Galería de Jugabilidad y Playtesting</h2>
+          <p class="text-xs text-gray-400">Capturas de usuarios jugando las demos en PC Master Race, Steam Deck, consolas y sesiones de prueba comunitarias.</p>
+        </div>
+
+        <!-- Gallery filters -->
+        <div class="flex items-center gap-1 bg-panel p-1 rounded-lg border border-lineBlue text-xs font-mono">
+          <button class="gallery-filter active px-3 py-1 rounded text-gray-300 hover:text-white" data-gallery="all">Todos</button>
+          <button class="gallery-filter px-3 py-1 rounded text-gray-300 hover:text-cyanNeon" data-gallery="pc">PC Setup</button>
+          <button class="gallery-filter px-3 py-1 rounded text-gray-300 hover:text-amberNeon" data-gallery="mobile">Steam Deck / Móvil</button>
+          <button class="gallery-filter px-3 py-1 rounded text-gray-300 hover:text-limeNeon" data-gallery="stream">Streamers / Eventos</button>
+        </div>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+        <!-- Card 1 -->
+        <div class="gallery-item group relative bg-panel border border-lineBlue hover:border-cyanNeon rounded-xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1" data-cat="pc">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=PC+Playtest'" alt="Playtester con setup de PC e iluminación cian" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-panel via-transparent to-transparent opacity-80"></div>
+            <span class="absolute top-2 left-2 bg-bgDark/80 border border-cyanNeon/40 text-cyanNeon text-[10px] font-mono px-2 py-0.5 rounded">PC MASTER RACE</span>
+          </div>
+          <div class="p-3.5 space-y-1">
+            <h4 class="font-bold text-white text-xs">Playtester #104 · Feedback de Puzles</h4>
+            <p class="text-[11px] text-gray-400">"El kit de reparación de M-4 responde excelente a 144 FPS con teclado y ratón."</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="gallery-item group relative bg-panel border border-lineBlue hover:border-amberNeon rounded-xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1" data-cat="mobile">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Steam+Deck+Test'" alt="Gamer jugando en dispositivo portátil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-panel via-transparent to-transparent opacity-80"></div>
+            <span class="absolute top-2 left-2 bg-bgDark/80 border border-amberNeon/40 text-amberNeon text-[10px] font-mono px-2 py-0.5 rounded">STEAM DECK & PWA</span>
+          </div>
+          <div class="p-3.5 space-y-1">
+            <h4 class="font-bold text-white text-xs">Prueba de Rendimiento Portátil</h4>
+            <p class="text-[11px] text-gray-400">"Prueba de la PWA Terminal de Lumen sincronizando logros e inventarios sin latencia."</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="gallery-item group relative bg-panel border border-lineBlue hover:border-limeNeon rounded-xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1" data-cat="stream">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Stream+Feedback'" alt="Streamer reaccionando al juego Lumen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-panel via-transparent to-transparent opacity-80"></div>
+            <span class="absolute top-2 left-2 bg-bgDark/80 border border-limeNeon/40 text-limeNeon text-[10px] font-mono px-2 py-0.5 rounded">STREAMING EN DIRECTO</span>
+          </div>
+          <div class="p-3.5 space-y-1">
+            <h4 class="font-bold text-white text-xs">Streamer Indie 'CyberGamer'</h4>
+            <p class="text-[11px] text-gray-400">"Transmisión especial del Acto I con más de 2,400 espectadores en vivo."</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="gallery-item group relative bg-panel border border-lineBlue hover:border-violetNeon rounded-xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-1" data-cat="pc">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/0f172a/3fe4ff?text=Playtest+Laboratorio'" alt="Sesión de Playtesting en laboratorio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-panel via-transparent to-transparent opacity-80"></div>
+            <span class="absolute top-2 left-2 bg-bgDark/80 border border-violetNeon/40 text-violetNeon text-[10px] font-mono px-2 py-0.5 rounded">LAB DE PLAYTEST</span>
+          </div>
+          <div class="p-3.5 space-y-1">
+            <h4 class="font-bold text-white text-xs">Playtest Presencial Dimatrek</h4>
+            <p class="text-[11px] text-gray-400">"Validación de curva de dificultad y accesibilidad visual en puzles de circuitos."</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <div class="border-b border-lineBlue/60 pb-3">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-violetNeon mb-1">
+          <span class="w-2 h-2 rounded-full bg-violetNeon animate-ping"></span>
+          <span>SISTEMAS ESTRATÉGICOS EN ACCIÓN</span>
+        </div>
+        <h2 class="text-xl lg:text-2xl font-bold text-white">Escenas Animadas del Universo Lumen</h2>
+        <p class="text-xs text-gray-400">Ilustraciones dinámicas SVG que representan los tres pilar de jugabilidad y narrativa.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Scene 1: Repair Mechanic -->
+        <article class="bg-gradient-to-b from-panel to-bgDark border border-lineBlue hover:border-cyanNeon rounded-xl p-5 shadow-xl relative overflow-hidden group">
+          <div class="relative z-10 space-y-2">
+            <span class="text-[10px] font-mono text-cyanNeon border border-cyanNeon/30 px-2 py-0.5 rounded">DESARROLLO</span>
+            <h3 class="font-bold text-white text-base">Reparación Colaborativa</h3>
+            <p class="text-xs text-gray-300 leading-relaxed max-w-[60%]">M-4 restaura núcleos de energía en robots varados para desbloquear fragmentos de memoria.</p>
+          </div>
+          <!-- SVG Animated Canvas Graphic -->
+          <svg class="absolute right-0 bottom-0 w-3/5 h-full opacity-90 pointer-events-none" viewBox="0 0 260 170">
+            <path d="M0 30H260M0 70H260M0 110H260M30 0V170M80 0V170M130 0V170M180 0V170M230 0V170" stroke="#3e6785" opacity="0.25" stroke-width="1"/>
+            <circle cx="72" cy="38" r="18" fill="#3fe4ff" opacity="0.6" class="animate-pulse-glow"/>
+            <rect x="42" y="55" width="60" height="54" rx="22" fill="#1e3a5a" stroke="#3fe4ff" stroke-width="2"/>
+            <rect x="53" y="66" width="38" height="22" rx="10" fill="#091322"/>
+            <circle cx="65" cy="77" r="3" fill="#3fe4ff"/>
+            <circle cx="80" cy="77" r="3" fill="#3fe4ff"/>
+            <g class="animate-float">
+              <path d="M98 82 Q130 74 143 100" fill="none" stroke="#3fe4ff" stroke-width="6" stroke-linecap="round"/>
+              <path d="M141 99l13 11m-9-17l12 3" stroke="#ffc65a" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <circle cx="160" cy="105" r="5" fill="#ffc65a" class="animate-ping"/>
+            <rect x="163" y="89" width="62" height="45" rx="18" fill="#13243a" stroke="#233e5c" stroke-width="2"/>
+          </svg>
+        </article>
+
+        <!-- Scene 2: Puzzle Loop -->
+        <article class="bg-gradient-to-b from-panel to-bgDark border border-lineBlue hover:border-amberNeon rounded-xl p-5 shadow-xl relative overflow-hidden group">
+          <div class="relative z-10 space-y-2">
+            <span class="text-[10px] font-mono text-amberNeon border border-amberNeon/30 px-2 py-0.5 rounded">COMERCIAL</span>
+            <h3 class="font-bold text-white text-base">Puzles de Circuitos Lógicos</h3>
+            <p class="text-xs text-gray-300 leading-relaxed max-w-[60%]">Mecánicas de conectividad fluidas diseñadas para fácil adaptación en PC y dispositivos táctiles.</p>
+          </div>
+          <!-- SVG Animated Canvas Graphic -->
+          <svg class="absolute right-0 bottom-0 w-3/5 h-full opacity-90 pointer-events-none" viewBox="0 0 260 170">
+            <path d="M0 30H260M0 70H260M0 110H260M30 0V170M80 0V170M130 0V170M180 0V170M230 0V170" stroke="#3e6785" opacity="0.25" stroke-width="1"/>
+            <rect x="28" y="62" width="63" height="55" rx="25" fill="#1b2f4a" stroke="#ffc65a" stroke-width="2"/>
+            <rect x="129" y="67" width="69" height="69" rx="10" fill="#0f1f33" stroke="#ffc65a" stroke-width="2"/>
+            <path d="M139 77h20v10a8 8 0 1016 0V77h13v20h-10a8 8 0 100 16h10v13h-21v-10a8 8 0 10-16 0v10h-12z" fill="#ffc65a"/>
+            <path d="M205 83h17v8a7 7 0 1014 0v-8h13v16h-8a7 7 0 100 14h8v15h-18v-8a7 7 0 10-14 0v8h-12z" fill="#a87aff" class="animate-float"/>
+          </svg>
+        </article>
+
+        <!-- Scene 3: Community Link -->
+        <article class="bg-gradient-to-b from-panel to-bgDark border border-lineBlue hover:border-limeNeon rounded-xl p-5 shadow-xl relative overflow-hidden group">
+          <div class="relative z-10 space-y-2">
+            <span class="text-[10px] font-mono text-limeNeon border border-limeNeon/30 px-2 py-0.5 rounded">COMUNIDAD</span>
+            <h3 class="font-bold text-white text-base">Conexión y Sincronización</h3>
+            <p class="text-xs text-gray-300 leading-relaxed max-w-[60%]">Interconexión comunitaria vía Terminal PWA compartiendo estadísticas globales de decisiones.</p>
+          </div>
+          <!-- SVG Animated Canvas Graphic -->
+          <svg class="absolute right-0 bottom-0 w-3/5 h-full opacity-90 pointer-events-none" viewBox="0 0 260 170">
+            <path d="M0 30H260M0 70H260M0 110H260M30 0V170M80 0V170M130 0V170M180 0V170M230 0V170" stroke="#3e6785" opacity="0.25" stroke-width="1"/>
+            <g class="animate-float">
+              <rect x="28" y="63" width="61" height="53" rx="24" fill="#193529" stroke="#b9f558" stroke-width="2"/>
+              <circle cx="44" cy="95" r="4" fill="#ff6c98"/>
+            </g>
+            <g class="animate-float" style="animation-delay: -1.5s;">
+              <rect x="166" y="63" width="61" height="53" rx="24" fill="#193529" stroke="#b9f558" stroke-width="2"/>
+              <circle cx="211" cy="95" r="4" fill="#ff6c98"/>
+            </g>
+            <path d="M126 58c-9-10-22 4 0 18 22-14 9-28 0-18z" fill="#ff6c98" class="animate-pulse"/>
+          </svg>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE DIAGNÓSTICO DE NODO -->
+  <dialog id="node-modal" class="rounded-2xl border border-lineBlue bg-panel text-white shadow-2xl p-0 w-full max-w-2xl overflow-hidden backdrop:bg-bgDark/80">
+    <div class="p-5 border-b border-lineBlue/80 bg-gradient-to-r from-bgDark via-panel to-panel flex items-start justify-between">
+      <div>
+        <span id="modal-node-id" class="text-[10px] font-mono text-cyanNeon tracking-widest font-bold block">NODO ESTRATÉGICO</span>
+        <h3 id="modal-node-title" class="text-xl font-extrabold text-white">Título del Nodo</h3>
+      </div>
+      <button id="modal-close" class="text-gray-400 hover:text-white bg-bgDark border border-lineBlue rounded-full p-1.5 hover:border-cyanNeon transition-all">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <div class="p-6 space-y-6 max-h-[75vh] overflow-y-auto font-sans">
+      
+      <!-- Description -->
+      <div class="space-y-2">
+        <h4 class="text-xs font-mono text-gray-400 uppercase tracking-wider">RESUMEN DEL NODO</h4>
+        <p id="modal-node-desc" class="text-sm text-gray-200 leading-relaxed bg-bgDark/60 p-3.5 rounded-lg border border-lineBlue/40">Descripción completa del nodo...</p>
+      </div>
+
+      <!-- Impact Progress Meter -->
+      <div class="space-y-2">
+        <div class="flex justify-between text-xs font-mono">
+          <span class="text-gray-400">IMPACTO EN DESARROLLO & RETENCIÓN GAMER</span>
+          <span id="modal-impact-percent" class="text-cyanNeon font-bold">85%</span>
+        </div>
+        <div class="w-full bg-bgDark rounded-full h-2 border border-lineBlue overflow-hidden">
+          <div id="modal-impact-bar" class="bg-gradient-to-r from-cyanNeon to-limeNeon h-2 rounded-full transition-all duration-700" style="width: 85%;"></div>
+        </div>
+      </div>
+
+      <!-- Metrics grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <div class="bg-bgDark/80 p-3.5 rounded-lg border border-lineBlue/60 space-y-1">
+          <strong class="text-cyanNeon font-mono block text-[11px]">RECURSOS & COSTOS ESTIMADOS</strong>
+          <span id="modal-node-cost" class="text-gray-300 block">Detalles de inversión...</span>
+        </div>
+        <div class="bg-bgDark/80 p-3.5 rounded-lg border border-lineBlue/60 space-y-1">
+          <strong class="text-amberNeon font-mono block text-[11px]">RELACIÓN CON EL GDD</strong>
+          <span id="modal-node-gdd" class="text-gray-300 block">Referencia en documento técnico...</span>
+        </div>
+      </div>
+
+      <!-- Playtest gamer comment quote -->
+      <div class="bg-violetNeon/10 border border-violetNeon/30 p-4 rounded-xl space-y-2">
+        <div class="flex items-center gap-2 text-violetNeon text-xs font-mono">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+          <span>FEEDBACK DE PLAYTESTERS GAMERS</span>
+        </div>
+        <p id="modal-gamer-quote" class="text-xs text-gray-200 italic">"Comentario de prueba del usuario gamer sobre esta área..."</p>
+      </div>
+
+    </div>
+
+    <div class="p-4 border-t border-lineBlue bg-bgDark/90 flex justify-end">
+      <button id="modal-confirm" class="px-5 py-2 bg-cyanNeon text-black font-bold text-xs rounded-lg hover:bg-cyanNeon/80 transition-all">Entendido / Cerrar</button>
+    </div>
+  </dialog>
+
+  <!-- LIGHTBOX MODAL PARA GALERÍA -->
+  <dialog id="gallery-modal" class="rounded-2xl border border-lineBlue bg-panel text-white shadow-2xl p-0 max-w-3xl w-full overflow-hidden backdrop:bg-bgDark/90">
+    <div class="relative">
+      <img id="lightbox-img" src="" alt="Vista ampliada playtest" class="w-full max-h-[70vh] object-contain bg-black">
+      <button id="lightbox-close" class="absolute top-3 right-3 bg-bgDark/80 text-white p-2 rounded-full border border-lineBlue hover:border-cyanNeon">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <div class="p-4 bg-bgDark space-y-1">
+      <h3 id="lightbox-title" class="text-base font-bold text-white"></h3>
+      <p id="lightbox-desc" class="text-xs text-gray-400"></p>
+    </div>
+  </dialog>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-lineBlue/60 bg-bgDark/90 py-6 px-4 lg:px-8 text-center text-xs text-gray-400 font-mono">
+    <div class="max-w-[1780px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>DIMATREK SERVICES · PROYECTO LUMEN © 2026</div>
+      <div class="flex items-center gap-4">
+        <span>Unity 2023 LTS</span>
+        <span>·</span>
+        <span>Steam & Itch.io</span>
+        <span>·</span>
+        <span class="text-cyanNeon">PWA Offline Sync</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Audio synthesizer for sci-fi hover/click sounds
+    let audioEnabled = false;
+    let audioCtx = null;
+
+    function playSound(freq = 440, type = 'sine', duration = 0.08) {
+      if (!audioEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    document.getElementById('audio-toggle').addEventListener('click', () => {
+      audioEnabled = !audioEnabled;
+      document.getElementById('audio-status').innerText = audioEnabled ? 'SFX: ON' : 'SFX: OFF';
+      document.getElementById('audio-toggle').classList.toggle('border-cyanNeon', audioEnabled);
+      if (audioEnabled) playSound(660, 'triangle', 0.12);
+    });
+
+    // Data for Business Model Canvas Nodes
+    const nodeData = {
+      partners: {
+        title: 'Socios Clave (Red)',
+        type: 'community',
+        desc: 'Plataformas de distribución digital (Steam e Itch.io) para validación de la demo e inserción de la versión premium. Red de creadores de contenido gaming en Twitch/YouTube e influencers indies.',
+        impact: 80,
+        cost: 'Steam Direct Fee ($100 USD único). Kit de prensa y copias de prensa enviadas a 120+ creadores.',
+        gdd: 'GDD Secc. 1.2: Validación comercial mediante demo de Actos I-II previa al lanzamiento comercial.',
+        quote: '"Probar la demo en Steam Deck nos demostró la gran química con los creadores de contenido indie."'
+      },
+      activities: {
+        title: 'Actividades Clave (Producción)',
+        type: 'development',
+        desc: 'Desarrollo del juego en Unity C#, diseño iterativo de puzles de circuitos lógicos, QA continuo con playtesters, optimización de FPS e implementación de la API de progreso.',
+        impact: 92,
+        cost: 'Consumo directo de horas de desarrollo técnico, testing, pruebas de regresión y licencias de middleware.',
+        gdd: 'GDD Secc. 3.4: Sistema de kit de reparación de M-4 y sincronización de estado de decisiones.',
+        quote: '"Los parches lanzados tras las pruebas de QA mejoraron en un 40% el tiempo de resolución en puzles."'
+      },
+      relationships: {
+        title: 'Relación con Jugadores (Vínculo)',
+        type: 'community',
+        desc: 'Comunicación abierta mediante Devlogs semanales en Steam, servidor de Discord con rol de Playtester VIP, soporte post-lanzamiento e integración de sugerencias del público.',
+        impact: 88,
+        cost: 'Tiempo de moderación de comunidad, creación de boletines y mantenimiento del Discord activo.',
+        gdd: 'GDD Secc. 5.1: Bucle de retroalimentación narrativa directa con la comunidad de jugadores.',
+        quote: '"El servidor de Discord nos dio retroalimentación clave sobre la legibilidad de la tipografía neón."'
+      },
+      segments: {
+        title: 'Segmentos de Clientes (Audiencia)',
+        type: 'community',
+        desc: 'Jugadores apasionados por RPGs de exploración narrativa y puzles lógicos (fans de Hyper Light Drifter, Citizen Sleeper). Audiencia técnica e indie interesada en arquitectura multiplataforma.',
+        impact: 85,
+        cost: 'Análisis de audiencia objetivo, campañas de retargeting y participación en festivales de Steam.',
+        gdd: 'GDD Secc. 2.1: Perfil de jugador explorador-analítico de baja fricción mecánica.',
+        quote: '"El 78% de los playtesters reportaron un alto interés en la estética cyberpunk y la narrativa sintética."'
+      },
+      value: {
+        title: 'Propuesta de Valor (Núcleo Lumen)',
+        type: 'development',
+        desc: 'Experiencia inmersiva que combina la reparación de robots con el descubrimiento narrativo. Guiar a M-4 y PIP en una ciudad sin humanos mientras descubren la verdad sobre CORE y RESTORE.',
+        impact: 98,
+        cost: 'Inversión central en dirección de arte low-poly, banda sonora atmosférica y diseño de puzles.',
+        gdd: 'GDD Secc. 1.1: M-4 como unidad de reparación ordinaria en busca de propósito propio.',
+        quote: '"La combinación de puzles reconfortantes y música sintetizada cautivó al 96% de los jugadores en las pruebas."'
+      },
+      resources: {
+        title: 'Recursos Clave (Base)',
+        type: 'development',
+        desc: 'Equipo interdisciplinario, Game Design Document completo, servidor Node.js/Express para la API unificada, biblioteca de assets low-poly y proyectos de audio FMOD.',
+        impact: 90,
+        cost: 'Servidores cloud API ($10-$50 USD/mes), dominio SSL, almacenamiento y herramientas de diseño.',
+        gdd: 'GDD Secc. 4.2: Especificación de la API de inventario, diario y mapa para la PWA acompañante.',
+        quote: '"El pipeline de assets optimizados permite mantener 60 FPS estables en PCs de gama entrada."'
+      },
+      channels: {
+        title: 'Canales de Acceso',
+        type: 'commercial',
+        desc: 'Página oficial en Steam Store, versión de prueba gratuita en Itch.io, Terminal PWA multiplataforma, redes sociales (X, TikTok Gaming) y presencia en festivales indies.',
+        impact: 82,
+        cost: 'Creación de cápsulas de Steam, tráileres cinemáticos, kit de prensa y hospedaje web.',
+        gdd: 'GDD Secc. 6.3: Integración de PWA como pantalla secundaria de mapa y códex lore.',
+        quote: '"Más del 35% de los jugadores usaron la app PWA en sus móviles mientras jugaban la demo en PC."'
+      },
+      costs: {
+        title: 'Estructura de Costos',
+        type: 'development',
+        desc: 'Presupuesto acotado que prioriza la viabilidad: infraestructura de servidores ($10-$50/mes), tarifa de publicación en Steam ($100 USD), producción de arte/sonido y comisiones.',
+        impact: 75,
+        cost: 'Control estricto de alcance para garantizar rentabilidad en ventas tempranas.',
+        gdd: 'GDD Secc. 7.1: Modelo de producción con presupuesto acotado y cámaras isométricas fijas.',
+        quote: '"Optimizar el alcance nos permitió mantener costos bajos sin sacrificar la pulidez gráfica."'
+      },
+      revenue: {
+        title: 'Fuentes de Ingresos (Sostenibilidad)',
+        type: 'commercial',
+        desc: 'Modelo comercial transparente: Juego base premium en Steam ($4.99 USD), Demo gratuita de prueba ($0 USD) y Supporter Pack opcional ($7.99 USD) con libro de arte y BSO.',
+        impact: 94,
+        cost: 'Comisión del 30% retenida por Steam en cada compra realizada.',
+        gdd: 'GDD Secc. 7.3: Estrategia de monetización premium libre de microtransacciones o publicidad.',
+        quote: '"El Supporter Pack tuvo una tasa de conversión del 18% entre los usuarios que completaron la demo."'
+      }
+    };
+
+    // Node dependency edges
+    const edges = [
+      ['partners', 'activities'],
+      ['activities', 'value'],
+      ['resources', 'value'],
+      ['value', 'relationships'],
+      ['relationships', 'segments'],
+      ['segments', 'channels'],
+      ['channels', 'revenue'],
+      ['costs', 'activities'],
+      ['revenue', 'resources']
+    ];
+
+    // SVG Links rendering engine
+    const svgLinks = document.getElementById('svg-links');
+    const nodes = document.querySelectorAll('.node-card');
+    let selectedNode = null;
+    let activeFilter = 'all';
+
+    function drawConnections() {
+      svgLinks.innerHTML = `
+        <defs>
+          <marker id="arrow-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#3fe4ff"/>
+          </marker>
+          <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#ffc65a"/>
+          </marker>
+          <marker id="arrow-lime" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#b9f558"/>
+          </marker>
+        </defs>
+      `;
+
+      const containerRect = svgLinks.getBoundingClientRect();
+
+      edges.forEach(([fromId, toId]) => {
+        const fromEl = document.querySelector(`[data-node="${fromId}"]`);
+        const toEl = document.querySelector(`[data-node="${toId}"]`);
+
+        if (!fromEl || !toEl) return;
+
+        const fromRect = fromEl.getBoundingClientRect();
+        const toRect = toEl.getBoundingClientRect();
+
+        const x1 = fromRect.left + fromRect.width / 2 - containerRect.left;
+        const y1 = fromRect.top + fromRect.height / 2 - containerRect.top;
+        const x2 = toRect.left + toRect.width / 2 - containerRect.left;
+        const y2 = toRect.top + toRect.height / 2 - containerRect.top;
+
+        const dx = (x2 - x1) * 0.35;
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        
+        path.setAttribute('d', `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`);
+        path.classList.add('link-path');
+        path.dataset.edge = `${fromId}-${toId}`;
+
+        // Active connection check
+        if (selectedNode) {
+          if (fromId === selectedNode || toId === selectedNode) {
+            path.classList.add('active');
+            const nodeType = nodeData[selectedNode]?.type || 'development';
+            if (nodeType === 'commercial') path.classList.add('commercial');
+            if (nodeType === 'community') path.classList.add('community');
+          }
+        }
+
+        svgLinks.appendChild(path);
+      });
+    }
+
+    // Node click modal trigger
+    const modal = document.getElementById('node-modal');
+
+    function openNodeModal(nodeKey) {
+      const data = nodeData[nodeKey];
+      if (!data) return;
+
+      selectedNode = nodeKey;
+      playSound(520, 'sine', 0.1);
+      drawConnections();
+
+      document.getElementById('modal-node-id').innerText = `NODO / ${nodeKey.toUpperCase()}`;
+      document.getElementById('modal-node-title').innerText = data.title;
+      document.getElementById('modal-node-desc').innerText = data.desc;
+      document.getElementById('modal-node-cost').innerText = data.cost;
+      document.getElementById('modal-node-gdd').innerText = data.gdd;
+      document.getElementById('modal-gamer-quote').innerText = data.quote;
+      document.getElementById('modal-impact-percent').innerText = `${data.impact}%`;
+      document.getElementById('modal-impact-bar').style.width = `${data.impact}%`;
+
+      modal.showModal();
+    }
+
+    nodes.forEach(node => {
+      node.addEventListener('mouseenter', () => playSound(380, 'sine', 0.04));
+      node.addEventListener('click', () => {
+        openNodeModal(node.dataset.node);
+      });
+    });
+
+    document.getElementById('modal-close').addEventListener('click', () => {
+      playSound(300, 'sine', 0.08);
+      modal.close();
+    });
+
+    document.getElementById('modal-confirm').addEventListener('click', () => {
+      playSound(440, 'sine', 0.08);
+      modal.close();
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.close();
+    });
+
+    // Strategic lens filter buttons
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active', 'bg-cyanNeon/20', 'text-cyanNeon', 'bg-amberNeon/20', 'text-amberNeon', 'bg-limeNeon/20', 'text-limeNeon'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        activeFilter = filter;
+        playSound(480, 'triangle', 0.08);
+
+        nodes.forEach(node => {
+          const nodeType = node.dataset.type;
+          if (filter === 'all' || nodeType === filter) {
+            node.style.opacity = '1';
+            node.style.filter = 'none';
+          } else {
+            node.style.opacity = '0.25';
+            node.style.filter = 'grayscale(80%)';
+          }
+        });
+
+        drawConnections();
+      });
+    });
+
+    // Gallery filter & Lightbox
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const galleryBtns = document.querySelectorAll('.gallery-filter');
+    const galleryModal = document.getElementById('gallery-modal');
+
+    galleryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        galleryBtns.forEach(b => b.classList.remove('active', 'bg-cyanNeon/20', 'text-cyanNeon'));
+        btn.classList.add('active');
+
+        const cat = btn.dataset.gallery;
+        playSound(400, 'sine', 0.06);
+
+        galleryItems.forEach(item => {
+          if (cat === 'all' || item.dataset.cat === cat) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img').src;
+        const title = item.querySelector('h4').innerText;
+        const desc = item.querySelector('p').innerText;
+
+        document.getElementById('lightbox-img').src = img;
+        document.getElementById('lightbox-title').innerText = title;
+        document.getElementById('lightbox-desc').innerText = desc;
+
+        playSound(580, 'sine', 0.1);
+        galleryModal.showModal();
+      });
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', () => galleryModal.close());
+    galleryModal.addEventListener('click', (e) => {
+      if (e.target === galleryModal) galleryModal.close();
+    });
+
+    // Window resize handler for SVG links recalculation
+    window.addEventListener('resize', drawConnections);
+    window.addEventListener('load', drawConnections);
+    setTimeout(drawConnections, 300);
+  </script>
+</body>
+</html>
