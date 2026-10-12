@@ -347,10 +347,12 @@ El desarrollo de **LUMEN** se organiza mediante la metodología ágil **Scrum**,
 
 | **Integrante** | **Rol** | **Principales responsabilidades** | **Perfil** |
 |---|---|---|---|
-| **Erick Matias** | Project Manager / Tester QA | Gestión del backlog en Jira, pruebas de calidad y control de riesgos. | [@EMATIAS](https://github.com/EMATIAS230045) |
+| **Erick Matias** | Project Manager /Compositor musical Secundario  | Gestión del backlog en Jira y Composición musical en LMMS/Cakewalk, diseño de SFX y mezcla en FMOD  | [@EMATIAS](https://github.com/EMATIAS230045) |
 | **Derek Sesni** | Lead Programmer / Game Designer | Arquitectura en C#, mecánicas de juego, integración de FMOD y sincronización con la PWA. | [@DevFntxy](https://github.com/DevFntxy) |
-| **Diego Rivera** | Artista 2D / 3D | Modelado Low-Poly en Blender, animaciones, texturizado PSX e interfaz visual. | [@DiegoMiguel04](https://github.com/DiegoMiguel04) |
-| **José García** | Diseñador de Audio | Composición musical en LMMS/Cakewalk, diseño de SFX y mezcla en FMOD. | [@ppyo1234](https://github.com/ppyo1234) |
+| **Diego Rivera** | Artista 2D / 3D / Compositor musical Principal | Modelado Low-Poly en Blender, animaciones, texturizado PSX, interfaz visual y Composición musical en LMMS/Cakewalk, diseño de SFX y mezcla en FMOD. | [@DiegoMiguel04](https://github.com/DiegoMiguel04) |
+| **José García** | Documentador Principal/Tester QA | Creacion de documentos guia para el desarrollo , pruebas de calidad y control de riesgos. | [@ppyo1234](https://github.com/ppyo1234) |
+
+<img src="/assets/Organigrama.png" alt="Unity">
 
 ### 📅 Organización del trabajo
 
