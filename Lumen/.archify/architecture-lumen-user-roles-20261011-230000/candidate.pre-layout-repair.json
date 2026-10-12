@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {"title":"LUMEN — Diagrama de Roles de Usuario","subtitle":"Roles internos y usuarios finales","output":".archify/architecture-lumen-user-roles-20261011-230000/lumen-user-roles-architecture.html","quality_profile":"showcase","animation":"trace"},
+  "components":[
+    {"id":"lumen","type":"frontend","label":"LUMEN","sublabel":"RPG de reparación y puzles","pos":[615,290],"size":[220,96],"tag":"Núcleo"},
+    {"id":"pm","type":"backend","label":"Project Manager","sublabel":"Backlog · riesgos · sprints","pos":[570,55],"size":[190,74]},
+    {"id":"lead","type":"backend","label":"Lead Programmer / Designer","sublabel":"Unity · C# · mecánicas","pos":[110,210],"size":[220,74]},
+    {"id":"artist","type":"frontend","label":"Artista 2D / 3D","sublabel":"Arte · animación · audio","pos":[985,210],"size":[210,74]},
+    {"id":"qa","type":"security","label":"Documentación / QA","sublabel":"Pruebas · guía · riesgos","pos":[570,500],"size":[200,74]},
+    {"id":"player","type":"external","label":"Jugador de PC","sublabel":"Explora · repara · decide","pos":[220,720],"size":[200,74]},
+    {"id":"codex","type":"external","label":"Usuario Terminal Codex","sublabel":"Consulta lore y progreso","pos":[635,720],"size":[210,74]},
+    {"id":"community","type":"external","label":"Comunidad / Playtester","sublabel":"Feedback de demo y QA","pos":[950,720],"size":[210,74]}
+  ],
+  "connections":[
+    {"from":"pm","to":"lumen","label":"coordina alcance","variant":"emphasis"},
+    {"from":"lead","to":"lumen","label":"implementa sistemas","variant":"emphasis"},
+    {"from":"artist","to":"lumen","label":"crea experiencia","variant":"emphasis"},
+    {"from":"qa","to":"lumen","label":"valida calidad","variant":"security"},
+    {"from":"lumen","to":"player","label":"aventura jugable","variant":"emphasis"},
+    {"from":"lumen","to":"codex","label":"progreso y lore","variant":"dashed"},
+    {"from":"community","to":"qa","label":"feedback de prueba","variant":"dashed"}
+  ]
+}

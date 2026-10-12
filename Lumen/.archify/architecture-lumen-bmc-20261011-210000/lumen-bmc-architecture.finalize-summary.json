@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\matias\\Desktop\\Introgradora\\Dimatrek-Services\\Lumen\\.archify\\architecture-lumen-bmc-20261011-210000\\candidate.json",
+    "sha256": "09d3126ba5548cd8ca15bc36b9746e65d634887ebf04ea09898257838f9f3ec5",
+    "bytes": 2438
+  },
+  "artifact": {
+    "path": "C:\\Users\\matias\\Desktop\\Introgradora\\Dimatrek-Services\\Lumen\\.archify\\architecture-lumen-bmc-20261011-210000\\lumen-bmc-architecture.html",
+    "sha256": "8e6830f154bafa000058e5664b3ff39bac213d25944e30b2a2a327893fe2167c",
+    "bytes": 763603
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\matias\\Desktop\\Introgradora\\Dimatrek-Services\\Lumen\\.archify\\architecture-lumen-bmc-20261011-210000\\lumen-bmc-architecture.finalize.json",
+    "summaryReceipt": "C:\\Users\\matias\\Desktop\\Introgradora\\Dimatrek-Services\\Lumen\\.archify\\architecture-lumen-bmc-20261011-210000\\lumen-bmc-architecture.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\matias\\Desktop\\Introgradora\\Dimatrek-Services\\Lumen\\.archify\\architecture-lumen-bmc-20261011-210000\\lumen-bmc-architecture.browser-check.json"
+  },
+  "update": {
+    "status": "unavailable",
+    "installedVersion": null,
+    "availableVersion": null,
+    "releaseNotes": null,
+    "checkedAt": null,
+    "source": null,
+    "noticeRequired": false,
+    "noticeText": null,
+    "reason": "timeout"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 27815
+}

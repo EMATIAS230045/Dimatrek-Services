@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "command": "deliver",
+  "status": "pending",
+  "receiptId": "ae5a6125-70ae-48db-9265-d4b958fc707f",
+  "input": "C:\\Users\\matias\\Desktop\\Introgradora\\Dimatrek-Services\\Lumen\\.archify\\architecture-lumen-user-roles-20261011-230000\\candidate.json",
+  "output": "C:\\Users\\matias\\Desktop\\Introgradora\\Dimatrek-Services\\Lumen\\.archify\\architecture-lumen-user-roles-20261011-230000\\lumen-user-roles-architecture.html"
+}
